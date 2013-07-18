@@ -13,91 +13,94 @@
 
     $.fn.simplePopup = function (options) {
 
-        var defaults = $.extend({
-        }, options);
+	var defaults = $.extend({
+	}, options);
         
-		/******************************
-		Private Variables
-		*******************************/         
+	/******************************
+	Private Variables
+	*******************************/         
         
-        var object = $(this);
-		var settings = $.extend(defaults, options);
+	var object = $(this);
+	var settings = $.extend(defaults, options);
         
-		/******************************
-		Public Methods
-		*******************************/         
+	/******************************
+	Public Methods
+	*******************************/         
         
-        var methods = {
-        	
-			init: function() {
-				return this.each(function () {
-					methods.appendHTML();
-					methods.setEventHandlers();
-					methods.showPopup();
-				});
-			},
-			
-			/******************************
-			Append HTML
-			*******************************/			
-			
-			appendHTML: function() {
+	var methods = {
 
-			},
+	    init: function() {
+		return this.each(function () {
+		    methods.appendHTML();
+		    methods.setEventHandlers();
+		    methods.showPopup();
+		});
+	    },
 
-			/******************************
-			Set Event Handlers
-			*******************************/			
-			
-			setEventHandlers: function() {
-			
-				$(".simplePopupClose, .simplePopupBackground").on("click", function (event) {
-					methods.hidePopup();
-				});
-				
-				$(window).on("resize", function(event){	
-				
-					methods.positionPopup();
-				});				
-				
-			},
-			
-			showPopup: function() {
-	            $(".simplePopupBackground").css({
-	                "opacity": "0.7"
-	            });
-	            $(".simplePopupBackground").fadeIn("fast");
-	            $(".simplePopup").fadeIn("slow");
-	            methods.positionPopup();
-			},
-			
-			hidePopup: function() {
-	            $(".simplePopupBackground").fadeOut("fast");
-	            $(".simplePopup").fadeOut("fast");
-			},			
-			
-			positionPopup: function() {
-	            var windowWidth = $(window).width();
-	            var windowHeight = $(window).height();
-	            var popupWidth = $(".simplePopup").width();				
-	            var popupHeight = $(".simplePopup").height();
-				console.log(windowHeight);
-	            $(".simplePopup").css({
-	                "position": "absolute",
-	                "top": (windowHeight / 2) - (popupHeight / 2),
-	                "left": (windowWidth / 2) - (popupWidth / 2)
-	            });
-			},			
+	    /******************************
+	    Append HTML
+	    *******************************/			
+
+	    appendHTML: function() {
+
+	    },
+
+	    /******************************
+	    Set Event Handlers
+	    *******************************/			
+
+	    setEventHandlers: function() {
+
+		$(".simplePopupClose, .simplePopupBackground").on("click", function (event) {
+		    methods.hidePopup();
+		});
+
+		$(window).on("resize", function(event){	
+		    methods.positionPopup();
+		});				
+
+	    },
+
+	    showPopup: function() {
+		$(".simplePopupBackground").css({
+		    "opacity": "0.7"
+		});
+		$(".simplePopupBackground").fadeIn("fast");
+		$(".simplePopup").fadeIn("slow");
+		methods.positionPopup();
+	    },
+
+	    hidePopup: function() {
+		$(".simplePopupBackground").fadeOut("fast");
+		$(".simplePopup").fadeOut("fast");
+	    },			
+
+	    positionPopup: function() {
+		var windowWidth = $(window).width();
+		var windowHeight = $(window).height();
+		var popupWidth = $(".simplePopup").width();				
+		var popupHeight = $(".simplePopup").height();
+
+		var topPos = (windowHeight / 2) - (popupHeight / 2);
+		var leftPos = (windowWidth / 2) - (popupWidth / 2);
+		if(topPos < 30) topPos = 30;
+		
+		$(".simplePopup").css({
+		    "position": "absolute",
+		    "top": topPos,
+		    "left": leftPos
+		});
+	    },			
+
+	};
         
-        };
-        
-        if (methods[options]) { 	// $("#element").pluginName('methodName', 'arg1', 'arg2');
-            return methods[options].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof options === 'object' || !options) { 	// $("#element").pluginName({ option: 1, option:2 });
-            return methods.init.apply(this);  
-        } else {
-            $.error( 'Method "' +  method + '" does not exist in slickhover plugin!');
-        } 
-};
+	if (methods[options]) { // $("#element").pluginName('methodName', 'arg1', 'arg2');
+	    return methods[options].apply(this, Array.prototype.slice.call(arguments, 1));
+	} else if (typeof options === 'object' || !options) { 	// $("#element").pluginName({ option: 1, option:2 });
+	    return methods.init.apply(this);  
+	} else {
+	    $.error( 'Method "' +  method + '" does not exist in simple popup plugin!');
+	} 
+    };
 
 })(jQuery);

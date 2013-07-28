@@ -43,6 +43,12 @@
 
 	    appendHTML: function() {
 
+		// if this has already been added we don't need to add it again
+		if ($('.simplePopupBackground').length === 0) {
+		    var background = '<div class="simplePopupBackground"></div>';
+		    $('body').prepend(background);
+		}
+
 	    },
 
 	    /******************************

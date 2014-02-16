@@ -49,6 +49,11 @@
 		    $('body').prepend(background);
 		}
 
+		if ($('.simplePopupClose').length === 0) {
+		    var close = '<div class="simplePopupClose">X</div>';
+		    $('.simplePopup').prepend(close);
+		}
+
 	    },
 
 	    /******************************

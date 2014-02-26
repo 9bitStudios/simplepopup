@@ -49,11 +49,10 @@
 		    $('body').prepend(background);
 		}
 
-		if ($('.simplePopupClose').length === 0) {
+		if(object.find('.simplePopupClose').length === 0) {
 		    var close = '<div class="simplePopupClose">X</div>';
-		    $('.simplePopup').prepend(close);
+		    object.prepend(close);
 		}
-
 	    },
 
 	    /******************************
@@ -77,26 +76,26 @@
 		    "opacity": "0.7"
 		});
 		$(".simplePopupBackground").fadeIn("fast");
-		$(".simplePopup").fadeIn("slow");
+		object.fadeIn("slow");
 		methods.positionPopup();
 	    },
 
 	    hidePopup: function() {
 		$(".simplePopupBackground").fadeOut("fast");
-		$(".simplePopup").fadeOut("fast");
+		object.fadeOut("fast");
 	    },			
 
 	    positionPopup: function() {
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
-		var popupWidth = $(".simplePopup").width();				
-		var popupHeight = $(".simplePopup").height();
+		var popupWidth = object.width();				
+		var popupHeight = object.height();
 
 		var topPos = (windowHeight / 2) - (popupHeight / 2);
 		var leftPos = (windowWidth / 2) - (popupWidth / 2);
 		if(topPos < 30) topPos = 30;
 		
-		$(".simplePopup").css({
+		object.css({
 		    "position": "absolute",
 		    "top": topPos,
 		    "left": leftPos

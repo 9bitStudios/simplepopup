@@ -15,3 +15,18 @@ $(document).ready(function(){
 });
 ```
 
+You can do this for as many different elements as you like...
+
+```javascript
+$(document).ready(function(){
+
+    $('a.show1').click(function(){
+        $('#pop1').simplePopup();
+    }); 
+
+    $('a.show2').click(function(){
+        $('#pop2').simplePopup();
+    }); 
+  
+});
+```

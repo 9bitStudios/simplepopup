@@ -30,3 +30,7 @@ $(document).ready(function(){
   
 });
 ```
+
+### Options
+
+None

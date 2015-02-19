@@ -14,6 +14,7 @@
     $.fn.simplePopup = function (options) {
 
 	var defaults = $.extend({
+            centerPopup: true
 	}, options);
         
 	/******************************
@@ -65,8 +66,11 @@
 		    methods.hidePopup();
 		});
 
-		$(window).on("resize", function(event){	
-		    methods.positionPopup();
+		$(window).on("resize", function(event){
+                    
+                    if(settings.centerPopup) {
+                        methods.positionPopup();
+                    }
 		});				
 
 	    },
@@ -77,7 +81,10 @@
 		});
 		$(".simplePopupBackground").fadeIn("fast");
 		object.fadeIn("slow");
-		methods.positionPopup();
+                
+                if(settings.centerPopup) {
+                    methods.positionPopup();
+                }
 	    },
 
 	    hidePopup: function() {

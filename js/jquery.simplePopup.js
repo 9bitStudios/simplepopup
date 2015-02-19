@@ -14,7 +14,9 @@
     $.fn.simplePopup = function (options) {
 
 	var defaults = $.extend({
-            centerPopup: true
+            centerPopup: true,
+            open: function() {},
+            closed: function() {}
 	}, options);
         
 	/******************************
@@ -75,12 +77,20 @@
 
 	    },
 
+            removeEventListners: function() {
+		$(".simplePopupClose, .simplePopupBackground").off("click");                
+            },
+
 	    showPopup: function() {
 		$(".simplePopupBackground").css({
 		    "opacity": "0.7"
 		});
-		$(".simplePopupBackground").fadeIn("fast");
-		object.fadeIn("slow");
+		
+                $(".simplePopupBackground").fadeIn("fast");
+                
+		object.fadeIn("slow", function(){
+                    settings.open();
+                });
                 
                 if(settings.centerPopup) {
                     methods.positionPopup();
@@ -89,7 +99,10 @@
 
 	    hidePopup: function() {
 		$(".simplePopupBackground").fadeOut("fast");
-		object.fadeOut("fast");
+		object.fadeOut("fast", function(){
+                    methods.removeEventListners();
+                    settings.closed();
+                });
 	    },			
 
 	    positionPopup: function() {

@@ -33,4 +33,10 @@ $(document).ready(function(){
 
 ### Options
 
-None
+Below is a listing of options you can set....
+
+| Option | Value | Default Value | Description | Example |
+| --- | --- | --- | --- | --- |
+| centerPopup | Boolean | true | This setting configures whether the popup is dynamically centered in the viewport when opened | centerPopup: false |
+| open | Function | function() { } | Callback function that fires when popup is opened | open: function() { console.log("Menu opened"); } |
+| closed | Function | function() { } | Callback function that fires when popup is closed | closed: function() { console.log("Menu closed"); } |

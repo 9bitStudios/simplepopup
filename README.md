@@ -5,6 +5,8 @@ A lightweight responsively-behaving jQuery popup plugin, without all of the extr
 
 All you have to do is give a container element the CSS class of .simplePopup. Then on whatever event you like simply call simplePopup on this element.
 
+[View Demo](https://9bitstudios.github.io/simplepopup)
+
 ```javascript
 $(document).ready(function(){
 
